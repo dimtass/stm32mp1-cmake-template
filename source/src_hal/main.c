@@ -93,11 +93,6 @@ int main(void)
     /* Configure the system clock */
     SystemClock_Config();
   }
-
-  log_info("Cortex-M4 boot successful with STM32Cube FW version: v%ld.%ld.%ld \r\n",
-                                            ((HAL_GetHalVersion() >> 24) & 0x000000FF),
-                                            ((HAL_GetHalVersion() >> 16) & 0x000000FF),
-                                            ((HAL_GetHalVersion() >> 8) & 0x000000FF));
   /* USER CODE END Init */
 
   /*HW semaphore Clock enable*/
@@ -115,6 +110,11 @@ int main(void)
   uart_init.HwFlowCtl = UART_HWCONTROL_NONE;
   BSP_COM_Init(COM2, &uart_init);
   BSP_COM_SelectLogPort(COM2);
+
+  log_info("Cortex-M4 boot successful with STM32Cube FW version: v%ld.%ld.%ld \r\n",
+                                            ((HAL_GetHalVersion() >> 24) & 0x000000FF),
+                                            ((HAL_GetHalVersion() >> 16) & 0x000000FF),
+                                            ((HAL_GetHalVersion() >> 8) & 0x000000FF));
 
   /* USER CODE BEGIN SysInit */
 
