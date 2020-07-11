@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: dimtass/stm32-cde-image:0.1
+      - image: dimtass/stm32-cde-image:latest
     steps:
       - checkout
       - run:
@@ -10,4 +10,4 @@ jobs:
           command: |
             git submodule sync
             git submodule update --init --recursive
-            CLEANBUILD=true USE_DBGUART=ON USE_STDPERIPH_DRIVER=ON SRC=src_stdperiph ./build.sh && CLEANBUILD=true USE_DBGUART=ON USE_STDPERIPH_DRIVER=ON USE_FREERTOS=ON SRC=src_freertos ./build.sh
+            CLEANBUILD=true SRC=src_hal ./build.sh
